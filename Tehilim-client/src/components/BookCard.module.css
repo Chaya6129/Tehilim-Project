@@ -1,0 +1,128 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 13rem;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+/* קו זהב דק בראש הכרטיס, כמו שוליים של דף בספר. */
+.card::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: var(--space-5);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-soft), transparent);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--color-gold-soft);
+  box-shadow: var(--shadow-lift);
+}
+
+.completed {
+  background: linear-gradient(180deg, #fffdf6, var(--color-surface));
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 1.5rem;
+}
+
+.badges {
+  display: flex;
+  gap: var(--space-2);
+  margin-inline-start: auto;
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* כל הכרטיס לחיץ, אבל רק הכותרת היא הקישור שמוקרא לקוראי מסך. */
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+}
+
+.link:focus-visible {
+  box-shadow: none;
+}
+
+.link:focus-visible::after {
+  box-shadow: var(--focus-ring);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.date {
+  font-family: var(--font-display);
+}
+
+.progress {
+  display: grid;
+  gap: var(--space-2);
+  margin-block-start: auto;
+}
+
+.counts {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.available {
+  color: var(--color-olive);
+  font-weight: 600;
+}
+
+.skeletonTag {
+  width: 30%;
+  height: 1.25rem;
+}
+
+.skeletonTitle {
+  width: 80%;
+  height: 1.75rem;
+}
+
+.skeletonLine {
+  width: 55%;
+  height: 1rem;
+}
+
+.skeletonBar {
+  width: 100%;
+  height: 0.5rem;
+  margin-block-start: auto;
+}

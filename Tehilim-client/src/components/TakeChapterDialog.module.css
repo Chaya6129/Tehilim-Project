@@ -1,0 +1,31 @@
+.form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.chapterNumeral {
+  margin-block-start: calc(var(--space-2) * -1);
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  color: var(--color-night);
+}
+
+.lead {
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.lead strong {
+  color: var(--color-night);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+}

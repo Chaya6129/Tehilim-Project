@@ -1,0 +1,36 @@
+.banner {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  margin-block-end: var(--space-6);
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  background: var(--color-night);
+  color: var(--color-paper);
+  border-radius: var(--radius-lg);
+  outline: 1px solid rgb(201 178 124 / 0.55);
+  outline-offset: -8px;
+  box-shadow: var(--shadow-lift);
+}
+
+.ornament {
+  color: var(--color-gold-soft);
+  animation: unfold var(--duration-slow) var(--ease) both;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  color: var(--color-gold-soft);
+}
+
+.text {
+  max-width: 34rem;
+  color: rgb(252 249 241 / 0.85);
+}
+
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+}

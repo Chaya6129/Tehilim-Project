@@ -1,0 +1,181 @@
+.sections {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin-block-end: var(--space-3);
+  padding-block-end: var(--space-2);
+  border-block-end: 1px solid var(--color-line);
+}
+
+.sectionTitle {
+  font-size: var(--text-lg);
+}
+
+.sectionRange {
+  font-family: var(--font-display);
+  color: var(--color-text-muted);
+}
+
+.sectionCount {
+  margin-inline-start: auto;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-olive);
+}
+
+.sectionDone {
+  color: var(--color-text-muted);
+}
+
+.sectionEmpty {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.75rem, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 5.75rem;
+  padding: var(--space-2) var(--space-1);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.hebrew {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.number {
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  opacity: 0.75;
+}
+
+/* פנוי: מסגרת זית דקה על רקע נייר, עם התווית "פנוי". */
+.available {
+  border: 1px solid var(--color-olive-line);
+  background: var(--color-paper);
+  color: var(--color-night);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
+.available:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  background: #fffdf5;
+  transform: translateY(-1px);
+}
+
+.available:hover:not(:disabled) .freeLabel {
+  color: var(--color-gold);
+}
+
+.available:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.freeLabel {
+  margin-block-start: 0.15rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-olive);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.freeLabel::before {
+  content: '';
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-inline-end: 0.3rem;
+  vertical-align: 0.1rem;
+  transform: rotate(45deg);
+  background: currentColor;
+}
+
+/* תפוס: מילוי כחול לילה, מספר בזהב, סימן וי ושם הנוטל. */
+.taken {
+  border: 1px solid var(--color-night);
+  background: var(--color-night);
+  color: var(--color-paper);
+}
+
+.taken .hebrew {
+  color: var(--color-gold-soft);
+}
+
+.takenBy {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  max-width: 100%;
+  margin-block-start: 0.15rem;
+  font-size: 0.7rem;
+  color: rgb(252 249 241 / 0.85);
+}
+
+.takenName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.check {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  color: var(--color-gold-soft);
+}
+
+.mine {
+  box-shadow:
+    0 0 0 2px var(--color-paper),
+    0 0 0 3px var(--color-gold);
+}
+
+.tileSkeleton {
+  height: 5.75rem;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 30rem) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr));
+    gap: 0.4rem;
+  }
+
+  .tile {
+    min-height: 5.25rem;
+  }
+
+  .hebrew {
+    font-size: 1.4rem;
+  }
+}

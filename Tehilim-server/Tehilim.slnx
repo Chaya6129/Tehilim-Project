@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Tehilim.Api/Tehilim.Api.csproj" Id="d26e3b52-c948-4f60-a934-cdc6f217b8a3" />
+  <Project Path="Tehilim.Core/Tehilim.Core.csproj" />
+  <Project Path="Tehilim.Data/Tehilim.Data.csproj" />
+  <Project Path="Tehilim.service/Tehilim.service.csproj" />
+  <Project Path="Tehilim.tests/Tehilim.tests.csproj" Id="ff55f827-bfad-4309-8771-2056284d3493" />
+</Solution>
