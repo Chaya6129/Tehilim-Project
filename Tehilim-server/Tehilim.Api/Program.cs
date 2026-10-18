@@ -112,14 +112,26 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p => p
     .AllowAnyHeader()
     .AllowAnyMethod()
     .WithExposedHeaders("Location", CorrelationIdMiddleware.HeaderName)));
+var clientUrl = builder.Configuration["ClientUrl"] ?? "http://localhost:5173";
+builder.Services.AddCors(options =>
+    options.AddPolicy("Client", policy =>
+        policy.WithOrigins(clientUrl)
+              .AllowAnyHeader()
+              .AllowAnyMethod()));
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
     await scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.MigrateAsync();
 }
+
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<CorrelationIdMiddleware>();
@@ -132,7 +144,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
-app.UseCors();
+app.UseCors("Client");
 app.UseAuthentication();
 app.UseAuthorization();
 
